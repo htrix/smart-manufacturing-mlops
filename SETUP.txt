@@ -99,3 +99,4 @@ argocd login 34.72.5.170:31704 --username admin --password $(kubectl get secret 
 
 --------------------------------------------------
 
+kubectl port-forward  svc/my-service -n argocd 9090:80 --address=0.0.0.0
