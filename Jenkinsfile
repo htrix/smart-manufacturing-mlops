@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_REPO = "dataguru97/gitops-project"
-        DOCKER_HUB_CREDENTIALS_ID = "gitops-dockerhub-token"
+        DOCKER_HUB_REPO = "htrix/gitops-project"
+        DOCKER_HUB_CREDENTIALS_ID = "dockerhub-token"
     }
     stages {
         stage('Checkout Github') {
@@ -46,7 +46,7 @@ pipeline {
                 script {
                     kubeconfig(credentialsId: 'kubeconfig', serverUrl: 'https://192.168.49.2:8443') {
                         sh '''
-                        argocd login 34.69.110.211:30751 --username admin --password $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --insecure
+                        argocd login 192.168.1.170:30751 --username admin --password $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d) --insecure
                         argocd app sync gitopsapp
                         '''
                     }
