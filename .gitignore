@@ -4,4 +4,5 @@ venv/
 results/
 jenkins_ssh/
 MLOPS_PROJECT_9.egg-info/
+kubeconfig
 
